@@ -1,5 +1,6 @@
 (function (){
 	//Author:@SatanWoo 
+
 	var consts = {GRID_SIZE:13, BLOCK_SIZE:12, MAX_HEIGHT:100};
 	var days = $('.js-calendar-graph-svg rect.day');
 	var maxCount = 0;
