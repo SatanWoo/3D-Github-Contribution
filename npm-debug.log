@@ -1,0 +1,27 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn invalid config proxy="http://:port"
+5 warn invalid config Must be a full url with 'http://'
+6 error install Couldn't read dependencies
+7 error Error: Invalid version: "1.0"
+7 error     at Object.module.exports.fixVersionField (/usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/fixer.js:183:13)
+7 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:30:38
+7 error     at Array.forEach (native)
+7 error     at normalize (/usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:29:15)
+7 error     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:342:33)
+7 error     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:126:33)
+7 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:316:48
+7 error     at evalmachine.<anonymous>:207:20
+7 error     at OpenReq.Req.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:141:5)
+7 error     at OpenReq.done (/usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:61:22)
+8 error If you need help, you may report this *entire* log,
+8 error including the npm and node versions, at:
+8 error     <http://github.com/npm/npm/issues>
+9 error System Darwin 13.4.0
+10 error command "node" "/usr/local/bin/npm" "install"
+11 error cwd /Users/z/Documents/NodeJS/3DGithubContribution
+12 error node -v v0.10.33
+13 error npm -v 1.4.28
+14 verbose exit [ 1, true ]
