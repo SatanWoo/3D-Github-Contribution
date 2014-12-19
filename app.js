@@ -9,7 +9,6 @@ var request = require('request'),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'core')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
@@ -47,4 +46,5 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-app.listen(3000);
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'));
