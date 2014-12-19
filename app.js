@@ -3,13 +3,14 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     app  = express();
 
-var request = require('request'),
+var https = require('https'),
     cheerio = require('cheerio');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', function(req, res) {
 	res.render('index', {'title': 'Github 3D Contribution'});
@@ -22,21 +23,23 @@ app.post('/', function(req, res){
 
 app.get('/:username', function(req, res){
 	var username = req.params.username;
+	if (username == 'favicon.ico') return;
+
 	var self = res;
+	var url = 'https://github.com/users/' + username + '/contributions';
 
-	request('https://github.com/users/' + username + '/contributions', function(err, res, body) {
-		if (err) {
-			console.log('没有查询到这个用户');
-			return;
-		}
+	https.get(url, function(res) {
+			var body = '';
 
-		var $ = cheerio.load(res.body.toString());
+			res.on('data', function(chunk) {
+			    body += chunk;
+		    });
 
-		//console.log('Start of Body!!!!!!!');
-		//console.log($('svg'));
-		//console.log('End of Body!!!!!!!');
-
-		self.render('contribution', {'source':$('svg')});
+		    res.on('end', function() {
+			    self.render('contribution', {'source':body});
+		    });
+		}).on('error', function(e){
+		console.log(e);
 	});
 });
 
